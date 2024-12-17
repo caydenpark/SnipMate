@@ -22,7 +22,6 @@ struct ContentView: View {
     @State private var showToast: [String: Bool] = [:]
     @State private var selectedCategory: String
     
-    //    private let categories = ["Personal", "Work", "Random"]
     @State private var categories: [String] = {
         if let storedCategories = UserDefaults.standard.array(forKey: "categories") as? [String] {
             return storedCategories
@@ -30,10 +29,6 @@ struct ContentView: View {
         return ["Personal", "Work", "Random"] // Default categories
     }()
     
-    //    init() {
-    //        _selectedCategory = State(initialValue: categories.first ?? "")
-    //        loadSnippets()
-    //    }
     init() {
         let storedCategories = UserDefaults.standard.array(forKey: "categories") as? [String] ?? ["Personal", "Work", "Random"]
         _categories = State(initialValue: storedCategories)
@@ -46,8 +41,6 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            //            CategoryView(selectedCategory: $selectedCategory, categories: ["Personal", "Work", "Random"])
-            //                            .padding(.top)
             CategoryView(selectedCategory: $selectedCategory, categories: $categories)
                 .padding(.top)
                 .onChange(of: categories) { newCategories in

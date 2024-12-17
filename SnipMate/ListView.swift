@@ -19,8 +19,6 @@ struct ListView: View {
     @State private var hoveredKey: String?
     @State private var isHoveringTrashButton: [String: Bool] = [:]
     @State private var isHoveringEditButton: [String: Bool] = [:]
-//    @State private var isHoveringCheckmark: [String: Bool] = [:]
-//    @State private var isHoveringXmark: [String: Bool] = [:]
     
     var body: some View {
         VStack {
@@ -28,7 +26,6 @@ struct ListView: View {
                 let filteredSnippets: [String: String] = snippets[selectedCategory] ?? [:]
                 
                 ForEach(Array(filteredSnippets.keys.sorted().enumerated()), id: \.element) { (index, key) in
-//                ForEach(filteredSnippets.keys.sorted(), id: \.self) { key in
                     HStack {
                         if editingSnippet == key {
                             VStack {
@@ -67,7 +64,6 @@ struct ListView: View {
                         } else {
                             Text("⌘\(index + 1)")
                                 .foregroundColor(.secondary)
-//                                .font(.caption)
                             VStack(alignment: .leading) {
                                 Button(action: {
                                     copyToClipboard(content: snippets[selectedCategory]?[key] ?? "")
@@ -123,7 +119,6 @@ struct ListView: View {
                             }
                         }
                     }
-//                    .keyboardShortcut(shortcutKey(for: index), modifiers: .command)
                 }
             }
             .scrollContentBackground(.hidden)
@@ -147,13 +142,13 @@ struct ListView: View {
     
     private func copyToClipboard(content: String) {
         let pasteboard = NSPasteboard.general
-        pasteboard.clearContents() // Clear current clipboard content
-        pasteboard.setString(content, forType: .string) // Set the new content
+        pasteboard.clearContents()
+        pasteboard.setString(content, forType: .string)
     }
     
     private func deleteSnippet(for key: String) {
-        snippets[selectedCategory]?.removeValue(forKey: key) // Remove the snippet
-        UserDefaults.standard.set(snippets, forKey: "snippets") // Save changes to UserDefaults
+        snippets[selectedCategory]?.removeValue(forKey: key)
+        UserDefaults.standard.set(snippets, forKey: "snippets")
     }
 }
 

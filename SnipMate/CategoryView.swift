@@ -26,7 +26,7 @@ struct CategoryView: View {
                     isEditing.toggle()
                     if isEditing {
                         editedCategories = categories
-                        resetHoverState()  // Reset hover state when editing starts
+                        resetHoverState()
                     } else {
                         categories = editedCategories
                     }
@@ -108,7 +108,7 @@ struct CategoryView: View {
         editedCategories.remove(at: index)
         isHoveringTrash.remove(at: index)
         categories = editedCategories
-        resetHoverState()  // Reset hover state after deletion
+        resetHoverState()
     }
     
     private func addCategory() {
@@ -126,10 +126,3 @@ struct CategoryView: View {
         isHoveringTrash = Array(repeating: false, count: editedCategories.count)
     }
 }
-
-//#Preview {
-//    CategoryView(
-//        selectedCategory: .constant("Personal"),
-//        categories: ["Personal", "Work", "School"]
-//    ).frame(width: 350, height: 350)
-//}
