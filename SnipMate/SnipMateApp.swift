@@ -9,9 +9,21 @@ import SwiftUI
 
 @main
 struct SnipMateApp: App {
+    @StateObject private var dataModel = SnipMateDataModel()
+    
     var body: some Scene {
-        WindowGroup {
+        MenuBarExtra("SnipMate", systemImage: "scissors") {
             ContentView()
+                .frame(width: 300)
         }
+        .menuBarExtraStyle(.window)
     }
+}
+
+class SnipMateDataModel: ObservableObject {
+    @Published var categories: [String] = ["Work", "Personal"] // Default categories
+    @Published var snippets: [String: [String: String]] = [ // Default snippets
+        "Work": ["SSH Command": "ssh user@host"],
+        "Personal": ["Email": "myemail@example.com"]
+    ]
 }
