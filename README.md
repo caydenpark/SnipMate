@@ -5,6 +5,8 @@ SnipMate simplifies the process of managing reusable text snippets. Whether youâ
 
 This was built as my senior project for Brigham Young University-Idaho and emphasizes macOS app development using SwiftUI.
 
+![SnipMate Screenshot](docs/app_screenshot.png)
+
 ## Features  
 - **Menu Bar Access**: Always accessible in the macOS menu bar.  
 - **Snippet Management**: Add, edit, and delete text snippets.  
